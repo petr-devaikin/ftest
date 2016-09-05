@@ -64,6 +64,10 @@
                     document.getElementById('status').innerHTML =
                         'Thanks for logging in, ' + response.name + '!';
                 });
+                FB.api('/me/likes', function(response) {
+                    for (var i in response.data)
+                        console.log(response.data[i].name);
+                });
             }
         </script>
 
