@@ -3,7 +3,6 @@ function connected() {
 }
 
 function notConnected() {
-    console.log('123123123');
     window.location = 'login.html';
 }
 
