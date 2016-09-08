@@ -19,6 +19,11 @@ gulp.task('css', function () {
         .pipe(concat('style.css'))
         .pipe(gulp.dest('./public/css'))
         .pipe(browserSync.reload({ stream: true }));
+
+    gulp.src(['./source/font/*.*'])
+        //.pipe(sass({ onError: function (e) { console.log(e); } }))
+        .pipe(gulp.dest('./public/css'))
+        .pipe(browserSync.reload({ stream: true }));
 });
 
 
@@ -30,13 +35,13 @@ gulp.task('js', function () {
         .pipe(browserSync.reload({ stream: true }));
 });
 
-/*
+
 gulp.task('img', function () {
     gulp.src(['./source/img/*.*'])
         .pipe(gulp.dest('./public/img'))
         .pipe(browserSync.reload({ stream: true }));
 });
-*/
+
 
 
 
@@ -59,7 +64,7 @@ gulp.task('public', function(callback) {
 });
 
 
-gulp.task('serve', ['html', 'js', 'css'], function () {
+gulp.task('serve', ['html', 'js', 'css', 'img'], function () {
     browserSync({
         server: {
             baseDir: './public'
@@ -67,6 +72,8 @@ gulp.task('serve', ['html', 'js', 'css'], function () {
     });
 
     gulp.watch('./source/js/**/*.js', ['js'])
-    gulp.watch('./source/css/*.scss', ['css'])
+    gulp.watch('./source/css/*.css', ['css'])
+    gulp.watch('./source/font/*.*', ['css'])
     gulp.watch('./source/html/*.html', ['html'])
+    gulp.watch('./source/img/*.*', ['img'])
 });
