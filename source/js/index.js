@@ -39,17 +39,35 @@ function loadFriends(after) {
     FB.api('/me/invitable_friends?limit=100'+afterParam, function(response) {
         for (var i in response.data)
             friendsToInvite.push(response.data[i]);
+        //showFriends();
+
         if (response.paging == undefined)
             showFriends();
         else
             loadFriends(response.paging.cursors.after);
+
     });
 }
 
 function showFriends() {
     var html = "";
     console.log(friendsToInvite.length);
-    for (var i in friendsToInvite)
-        html += friendsToInvite[i].name + '<br/>';
+    for (var i in friendsToInvite) {
+        html += '<a href="#" onclick=\'invite("' + friendsToInvite[i].name + '", "' + friendsToInvite[i].id + '")\'>' +
+            '<img src="' + friendsToInvite[i].picture.data.url + '" width="20" /> ' +
+            friendsToInvite[i].name + '</a>' +
+            '<br/>';
+    }
     document.getElementById('friendsToInvite').innerHTML = html;
+}
+
+function invite(friend_name, friend_id) {
+    FB.ui({
+        method: 'apprequests',
+        message: 'Hey! Want to meet up today?',
+        to: friend_id
+    },
+    function(){
+        document.getElementById('inviteMsg').innerHTML = friend_name + ' invited';
+    });
 }
