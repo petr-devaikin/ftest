@@ -18,7 +18,7 @@ function testAPI() {
             'Hi ' + response.name + '!';
     });
 
-    FB.api('/me/likes?limit=50&fields=category,name', function(response) {
+    FB.api('/me/likes?limit=100&fields=category,name', function(response) {
         var html = "";
         for (var i in response.data)
             html += '<div class="event">' +

@@ -18,13 +18,14 @@ function testAPI() {
             'Hi ' + response.name + '!';
     });
 
-    FB.api('/me/likes?limit=100&fields=category,name', function(response) {
+    FB.api('/me/tagged_places?limit=100&fields=created_time,place{category,name}', function(response) {
         var html = "";
         for (var i in response.data)
             html += '<div class="event">' +
-                response.data[i].name +
-                '<div class="eventDate">' + response.data[i].category + '</div>' +
+                response.data[i].place.name +
+                '<div class="eventCategory">' + response.data[i].place.category + '</div>' +
+                '<div class="eventPlace">Visited ' + response.data[i].created_time.substr(0, 10) + '</div>' +
                 '</div>';
-        document.getElementById('likes').innerHTML = html;
+        document.getElementById('places').innerHTML = html;
     });
 }

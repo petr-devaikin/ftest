@@ -32,6 +32,20 @@ body:before {
     background-size: 100px;
 }
 
+body:after {
+    content: 'NO DESIGN';
+    position: fixed;
+    background: #000;
+    color: #fff;
+    right: -35px;
+    top: 35px;
+    padding: 5px 35px 5px 35px;
+    font-size: 18px;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+
 h3 {
     text-align: center;
     text-transform: uppercase;
