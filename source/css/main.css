@@ -125,6 +125,14 @@ h3 {
     font-weight: normal;
 }
 
+.eventCategory {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: normal;
+    color: gray;
+}
+
 .eventPlace {
     margin-top: 5px;
     font-size: 14px;
