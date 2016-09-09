@@ -80,12 +80,12 @@ function share(id) {
     if (id === undefined)
         FB.ui({
             method: 'send',
-            link: 'http://petr-devaikin.github.io/otto/',
+            link: 'http://artificialrome.com/dev/otto/',
         });
     else
         FB.ui({
             method: 'send',
-            link: 'http://petr-devaikin.github.io/otto/',
+            link: 'http://artificialrome.com/dev/otto/',
             to: id
         });
 }
